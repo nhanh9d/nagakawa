@@ -1,0 +1,10 @@
+[
+  { "label": "Bộ lịch 2025", "value": 10, "img": "/calendar.png" },
+  { "label": "Gift voucher#Discount 5%", "value": 20, "img": "/voucher_5.png" },
+  { "label": "Gift voucher#Discount 10%", "value": 20, "img": "/voucher_10.png" },
+  { "label": "Gift voucher#Discount 20%", "value": 20, "img": "/voucher_20.png" },
+  { "label": "Gift voucher#Discount 50%", "value": 20, "img": "/voucher_20.png" },
+  { "label": "Chúc bạn#may mắn#lần sau", "value": 30, "img": "" },
+  { "label": "Lì xì#200.000 VNĐ", "value": 40, "img": "/lucky_money.png" },
+  { "label": "Lì xì#100.000 VNĐ", "value": 40, "img": "/lucky_money.png" }
+]
