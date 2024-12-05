@@ -1,6 +1,5 @@
 // components/PieChart.tsx
-import React, { useEffect, useRef, useState } from "react";
-import * as d3 from "d3";
+import React from "react";
 import Image from "next/image";
 
 // Define the data type
