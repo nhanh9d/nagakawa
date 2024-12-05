@@ -41,7 +41,7 @@ export default function Home() {
           />
         </div>
         <h1 className="hidden">Nagakawa</h1>
-        <div className="main md:flex md:h-[calc(100vh-130px)] items-center justify-center overflow-hidden md:px-[100px]">
+        <div className="main md:flex md:h-[calc(100vh-130px)] items-center justify-center md:overflow-hidden md:px-[100px]">
           <div className="hidden md:block absolute left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/2">
             <Image
               id="wheel"
