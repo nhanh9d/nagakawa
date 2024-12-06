@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [img, setImg] = useState("");
   const [message, setMessage] = useState("");
   const [title, setTitle] = useState("");
