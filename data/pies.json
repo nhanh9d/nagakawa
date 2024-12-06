@@ -1,10 +1,58 @@
 [
-  { "label": "Bộ lịch 2025", "value": 10, "img": "/calendar.png" },
-  { "label": "Gift voucher#Discount 5%", "value": 20, "img": "/voucher_5.png" },
-  { "label": "Gift voucher#Discount 10%", "value": 20, "img": "/voucher_10.png" },
-  { "label": "Gift voucher#Discount 20%", "value": 20, "img": "/voucher_20.png" },
-  { "label": "Gift voucher#Discount 50%", "value": 20, "img": "/voucher_20.png" },
-  { "label": "Chúc bạn#may mắn#lần sau", "value": 30, "img": "" },
-  { "label": "Lì xì#200.000 VNĐ", "value": 40, "img": "/lucky_money.png" },
-  { "label": "Lì xì#100.000 VNĐ", "value": 40, "img": "/lucky_money.png" }
+  {
+    "label": "Bộ lịch 2025",
+    "title": "MÃ NA661H48P<br/>ĐÃ TRÚNG THƯỞNG",
+    "message": "BỘ LỊCH 2025",
+    "value": 10,
+    "img": "/calendar.png"
+  },
+  {
+    "label": "Gift voucher#Discount 5%",
+    "title": "MÃ NA661H48P<br/>ĐÃ TRÚNG THƯỞNG",
+    "message": "GIFT VOUCHER DISCOUNT 5%",
+    "value": 20,
+    "img": "/voucher_5.png"
+  },
+  {
+    "label": "Gift voucher#Discount 10%",
+    "title": "MÃ NA661H48P<br/>ĐÃ TRÚNG THƯỞNG",
+    "message": "GIFT VOUCHER DISCOUNT 10%",
+    "value": 20,
+    "img": "/voucher_10.png"
+  },
+  {
+    "label": "Gift voucher#Discount 20%",
+    "title": "MÃ NA661H48P<br/>ĐÃ TRÚNG THƯỞNG",
+    "message": "GIFT VOUCHER DISCOUNT 20%",
+    "value": 20,
+    "img": "/voucher_20.png"
+  },
+  {
+    "label": "Gift voucher#Discount 50%",
+    "title": "MÃ NA661H48P<br/>ĐÃ TRÚNG THƯỞNG",
+    "message": "GIFT VOUCHER DISCOUNT 50%",
+    "value": 20,
+    "img": "/voucher_20.png"
+  },
+  {
+    "label": "Chúc bạn#may mắn#lần sau",
+    "title": null,
+    "message": "Chúc bạn may mắn lần sau",
+    "value": 30,
+    "img": ""
+  },
+  {
+    "label": "Lì xì#200.000 VNĐ",
+    "title": "MÃ NA661H48P<br/>ĐÃ TRÚNG THƯỞNG",
+    "message": "LÌ XÌ 200.000 VNĐ",
+    "value": 40,
+    "img": "/lucky_money.png"
+  },
+  {
+    "label": "Lì xì#100.000 VNĐ",
+    "title": "MÃ NA661H48P<br/>ĐÃ TRÚNG THƯỞNG",
+    "message": "LÌ XÌ 100.000 VNĐ",
+    "value": 40,
+    "img": "/lucky_money.png"
+  }
 ]
