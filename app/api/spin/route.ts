@@ -33,8 +33,8 @@ export async function GET(req: NextRequest) {
     }
   
     // Register your custom font
-    const fontPath = path.join(process.cwd(), "app/fonts/Hagrid-Regular-trial.ttf"); // Adjust the path if needed
-    registerFont(fontPath, { family: "Hagrid" });
+    const fontPath = path.join(process.cwd(), "app/fonts/PottaOne-Regular.ttf"); // Adjust the path if needed
+    registerFont(fontPath, { family: "CanvasFont" });
 
     // Load the image from the 'public/images' folder
     const imagePath = path.join(process.cwd(), "public", `${imageName}${randomIndex + 1}.png`);
@@ -47,7 +47,7 @@ export async function GET(req: NextRequest) {
     ctx.drawImage(image, 0, 0, image.width, image.height);
 
     // Configure text properties
-    ctx.font = "120px Hagrid"; // Use your custom font
+    ctx.font = "120px CanvasFont"; // Use your custom font
     ctx.fillStyle = "black"; // Text color
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
