@@ -47,14 +47,13 @@ export async function GET(req: NextRequest) {
     ctx.drawImage(image, 0, 0, image.width, image.height);
 
     // Configure text properties
-    ctx.font = "120px CanvasFont"; // Use your custom font
+    ctx.font = "150px CanvasFont"; // Use your custom font
     ctx.fillStyle = "black"; // Text color
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
     // Draw the text in the center of the image
     ctx.fillText(nickname, image.width / 2, image.height / 2 - 100);
-    console.log("🚀 ~ GET ~ image.width / 2:", image.width / 2)
 
     // Stream the modified image back
     const buffer = canvas.toBuffer("image/png");
