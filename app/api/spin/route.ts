@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
 
     // Randomly pick a prize
     const randomIndex = Math.floor(Math.random() * prizes.length);
-    const selectedPrize = prizes[randomIndex];
+    // const selectedPrize = prizes[randomIndex];
 
     const { searchParams } = new URL(req.url);
     const imageName = searchParams.get("imageName"); // Get the image name from query params

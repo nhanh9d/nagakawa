@@ -1,5 +1,5 @@
 // components/Wheel.tsx
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 // Define props type
