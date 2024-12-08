@@ -1,17 +1,16 @@
 // components/Wheel.tsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 // Define props type
 interface WheelProps {
   nickname: string;
+  imageName: string;
 }
 
-const WheelStep: React.FC<WheelProps> = ({}) => {
+const WheelStep: React.FC<WheelProps> = ({ nickname, imageName }) => {
   const [showModal, setShowModal] = useState(false);
   const [img, setImg] = useState("");
-  const [message, setMessage] = useState("");
-  const [title, setTitle] = useState("");
 
   let currentRotation = 0;
   const spinSpeed = 10;
@@ -26,22 +25,21 @@ const WheelStep: React.FC<WheelProps> = ({}) => {
       }
     }, 20);
 
-    const response = await fetch("/api/spin", { method: "POST" });
-    const result = await response.json();
+    const response = await fetch(`/api/spin?imageName=${imageName}&nickname=${nickname}`);
+    const blob = await response.blob();
+    const src = URL.createObjectURL(blob);
 
-    clearInterval(spinningInterval);
-    currentRotation = 0;
-    for (const element of wheels) {
-      const wheel = element as HTMLElement;
-      wheel.style.transform = `rotate(${currentRotation}deg)`;
-    }
+    setTimeout(() => {
+      clearInterval(spinningInterval);
+      currentRotation = 0;
+      for (const element of wheels) {
+        const wheel = element as HTMLElement;
+        wheel.style.transform = `rotate(${currentRotation}deg)`;
+      }
 
-    if (result && result.selectedPrize) {
+      setImg(src);
       setShowModal(true);
-      setImg(result.selectedPrize.img);
-      setMessage(result.selectedPrize.message);
-      setTitle(result.selectedPrize.title);
-    }
+    }, 1500);
   };
 
   return (
@@ -76,12 +74,6 @@ const WheelStep: React.FC<WheelProps> = ({}) => {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                <div className="flex items-center justify-center p-5 border-b border-solid border-blueGray-200 rounded-t">
-                  <h3
-                    className="text-3xl text-[#046B38] text-center font-semibold"
-                    dangerouslySetInnerHTML={{ __html: title }}
-                  ></h3>
-                </div>
                 <div className="relative p-6 flex-auto">
                   <div className="flex justify-center items-center">
                     {img ? (
@@ -90,36 +82,12 @@ const WheelStep: React.FC<WheelProps> = ({}) => {
                         aria-hidden
                         src={img}
                         alt="Nagakawa"
-                        width={100}
+                        width={1000}
                         height={0}
                         priority
                       />
                     ) : null}
                   </div>
-                  <p className="my-4 text-black text-center text-lg leading-relaxed">
-                    {message ? (
-                      message
-                    ) : (
-                      <>
-                        Tiếc quá, bạn đã hết lượt chơi mất rồi.
-                        <br />
-                        Hẹn gặp lại bạn lần sau
-                      </>
-                    )}
-                    {message && title ? (
-                      <>
-                        <hr />
-                        <p>
-                          Vui lòng liên hệ hotline{" "}
-                          <a href="callto:1900.545.489" title="1900.545.489">
-                            1900.545.489
-                          </a>
-                          <br />
-                          hoặc FB/Zalo Nakagawa để nhận thưởng
-                        </p>
-                      </>
-                    ) : null}
-                  </p>
                 </div>
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                   <button

@@ -104,7 +104,7 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
           </div>
           <div className="flex justify-center">
             <button
-              className="font-['Inter'] font-bold py-2 px-12 min-w-[150px] border rounded-full border-[#046B38] bg-[#046B38] md:text-[30px]"
+              className="font-['Inter'] text-white font-bold py-2 px-12 min-w-[150px] border rounded-full border-[#046B38] bg-[#046B38] md:text-[30px]"
               onClick={() => {
                 goNext();
               }}
@@ -126,7 +126,7 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
                 }}
               />
               <button
-                className="font-['Inter'] font-bold py-2 px-12 min-w-[150px] border rounded-full border-[#046B38] bg-[#046B38]"
+                className="font-['Inter'] text-white font-bold py-2 px-12 min-w-[150px] border rounded-full border-[#046B38] bg-[#046B38]"
                 onClick={() => {
                   goNext();
                 }}

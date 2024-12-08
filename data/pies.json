@@ -33,26 +33,5 @@
     "message": "GIFT VOUCHER DISCOUNT 50%",
     "value": 20,
     "img": "/voucher_20.png"
-  },
-  {
-    "label": "Chúc bạn#may mắn#lần sau",
-    "title": null,
-    "message": "Chúc bạn may mắn lần sau",
-    "value": 30,
-    "img": ""
-  },
-  {
-    "label": "Lì xì#200.000 VNĐ",
-    "title": "MÃ NA661H48P<br/>ĐÃ TRÚNG THƯỞNG",
-    "message": "LÌ XÌ 200.000 VNĐ",
-    "value": 40,
-    "img": "/lucky_money.png"
-  },
-  {
-    "label": "Lì xì#100.000 VNĐ",
-    "title": "MÃ NA661H48P<br/>ĐÃ TRÚNG THƯỞNG",
-    "message": "LÌ XÌ 100.000 VNĐ",
-    "value": 40,
-    "img": "/lucky_money.png"
   }
 ]

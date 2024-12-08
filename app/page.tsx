@@ -10,7 +10,7 @@ export default function Home() {
   const [nickname, setNickname] = useState("");
 
   const selectRelationship = (selectedRelationship: string) => {
-    setRelationship(selectedRelationship);
+    setRelationship(selectedRelationship === "Chồng" ? "husband" : "father");
   };
 
   const selectNickname = (selectedNickname: string) => {
@@ -58,7 +58,7 @@ export default function Home() {
             />
           </>
         )}
-        {relationship && nickname && <WheelStep nickname={nickname} />}
+        {relationship && nickname && <WheelStep nickname={nickname} imageName={relationship} />}
       </div>
     </>
   );
