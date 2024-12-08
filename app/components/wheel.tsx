@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 // Define props type
-interface WheelProps {}
+interface WheelProps {
+  nickname: string;
+}
 
 const WheelStep: React.FC<WheelProps> = ({}) => {
   const [showModal, setShowModal] = useState(false);
