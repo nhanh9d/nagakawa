@@ -46,10 +46,10 @@ const WheelStep: React.FC<WheelProps> = ({}) => {
 
   return (
     <>
-      <div className="main md:flex md:h-[calc(100vh-130px)] items-center justify-center md:overflow-hidden md:px-[100px]">
-        <div className="hidden md:block absolute left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/2">
+      <div className="main md:flex md:h-[calc(100vh-130px)] items-center justify-center md:overflow-hidden md:px-[100px] relative">
+        <div className="absolute md:left-1/4 md:top-1/2 md:-translate-y-1/2 md:-translate-x-1/2 hover:cursor-pointer">
           <Image
-            className="wheel aspect-square !max-w-[600px]"
+            className="wheel aspect-square md:!max-w-[600px]"
             aria-hidden
             src="/wheel.png"
             alt="Nagakawa"
@@ -58,58 +58,16 @@ const WheelStep: React.FC<WheelProps> = ({}) => {
             priority
             onClick={() => spin()}
           />
-        </div>
-        <div className="font-['Inter'] md:border-[#046B38] md:border-x-[3px] md:border-y-[3px] md:rounded-[50px] md:pl-[500px] md:py-[16px] md:pr-[16px] md:bg-[#fff] text-center">
-          <h3 className="text-[#fff] text-[25px] md:text-[#046B38] md:text-[35px] pt-[16px] md:pt-0 font-black">
-            Chào mừng đến với vòng quay may mắn
-          </h3>
           <Image
-            className="wheel md:hidden aspect-square"
+            className="absolute right-[24px] top-[24px] max-w-[50px] md:max-w-full"
             aria-hidden
-            src="/wheel.png"
+            src="/wheel_selector.png"
             alt="Nagakawa"
-            width={1000}
+            width={100}
             height={0}
             priority
             onClick={() => spin()}
           />
-          <input
-            type="text"
-            placeholder="Họ và tên"
-            name="fullname"
-            className="bg-[#046B38] placeholder:text-white w-[80%] rounded-[10px] mb-1 p-[10px]"
-          />
-          <input
-            type="text"
-            placeholder="Số điện thoại"
-            name="phone"
-            className="bg-[#046B38] placeholder:text-white w-[80%] rounded-[10px] mb-1 p-[10px]"
-          />
-          <input
-            type="text"
-            placeholder="Email"
-            name="email"
-            className="bg-[#046B38] placeholder:text-white w-[80%] rounded-[10px] mb-4 p-[10px]"
-          />
-
-          <button
-            onClick={() => {
-              spin();
-            }}
-            className="shadow-inner border-[#046B38] border-x-[3px] border-y-[3px] bg-[#fff] md:border-[#fff] md:border-x-[3px] md:border-y-[3px] md:bg-[#046B38] text-[#046B38] md:text-white w-[80%] rounded-full mb-6 p-[10px]"
-          >
-            QUAY THƯỞNG
-          </button>
-          <br />
-          <a className="text-sm md:text-base text-[#1D2358]" href="">
-            Nội dung & Thể lệ chương trình
-          </a>
-          <p className="text-xs md:text-base text-black mt-8">
-            Nếu quý khách gặp bất cứ vấn đề gì trong quá trình chơi,
-          </p>
-          <p className="text-xs md:text-base text-black">
-            vui lòng liên hệ hotline 1900.545.489 để được giải đáp
-          </p>
         </div>
       </div>
 

@@ -52,17 +52,17 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
 
   return (
     <>
-      <h2 className="font-['Lobster'] text-center text-[#DA2E2E] text-[40px] md:text-[100px] mb-[57px]">
+      <h2 className="font-['Lobster'] text-center text-[#DA2E2E] text-[40px] md:text-[50px] mb-[27px]">
         Vinh Danh Người Bố Của Năm
       </h2>
-      <h3 className="font-['Inter'] font-bold text-center text-[25px] md:text-[60px] md:mb-[52px] mb-[32px] text-[#000]">
+      <h3 className="font-['Inter'] font-bold text-center text-[25px] md:text-[30px] md:mb-[52px] mb-[32px] text-[#000]">
         {question}
       </h3>
       {!showNickname ? (
         <>
           <div className="flex justify-center md:mb-[37px] flex-wrap">
             <button
-              className="relationship mb-[20px] focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold md:mx-4 mx-2 md:px-4 px-2 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] md:text-[39px] hover:shadow-lg"
+              className="relationship mb-[20px] focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold md:mx-4 mx-2 md:px-4 px-2 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setRelationship("Bố");
               }}
@@ -70,7 +70,7 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               Bố
             </button>
             <button
-              className="relationship mb-[20px] focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold md:mx-4 mx-2 md:px-4 px-2 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] md:text-[39px] hover:shadow-lg"
+              className="relationship mb-[20px] focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold md:mx-4 mx-2 md:px-4 px-2 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setRelationship("Mẹ");
               }}
@@ -78,7 +78,7 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               Mẹ
             </button>
             <button
-              className="relationship mb-[20px] focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold md:mx-4 mx-2 md:px-4 px-2 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] md:text-[39px] hover:shadow-lg"
+              className="relationship mb-[20px] focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold md:mx-4 mx-2 md:px-4 px-2 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setRelationship("Con");
               }}
@@ -86,7 +86,7 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               Con
             </button>
             <button
-              className="relationship mb-[20px] focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold md:mx-4 mx-2 md:px-4 px-2 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] md:text-[39px] hover:shadow-lg"
+              className="relationship mb-[20px] focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold md:mx-4 mx-2 md:px-4 px-2 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setRelationship("Vợ");
               }}
@@ -94,7 +94,7 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               Vợ
             </button>
             <button
-              className="relationship mb-[20px] focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold md:mx-4 mx-2 md:px-4 px-2 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] md:text-[39px] hover:shadow-lg"
+              className="relationship mb-[20px] focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold md:mx-4 mx-2 md:px-4 px-2 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setRelationship("Chồng");
               }}
@@ -104,7 +104,7 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
           </div>
           <div className="flex justify-center">
             <button
-              className="font-['Inter'] font-bold py-2 px-12 min-w-[150px] border rounded-full border-[#046B38] bg-[#046B38] md:text-[45px]"
+              className="font-['Inter'] font-bold py-2 px-12 min-w-[150px] border rounded-full border-[#046B38] bg-[#046B38] md:text-[30px]"
               onClick={() => {
                 goNext();
               }}
@@ -115,25 +115,29 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
         </>
       ) : (
         <>
-          <div className="flex">
-            <input
-              placeholder="Nhập biệt danh"
-              value={nickname}
-              onChange={(event) => {
-                setNickname(event.target.value);
-              }}
-            />
-            <button
-              onClick={() => {
-                goNext();
-              }}
-            >
-              Tiếp theo
-            </button>
+          <div className="flex justify-center mb-[24px] md:mb-[45px]">
+            <div className="md:max-w-[80%]">
+              <input
+                className="font-['Inter'] placeholder:italic rounded-full bg-white py-2 px-[20px] text-black mr-4 md:min-w-[500px]"
+                placeholder="Nhập biệt danh..."
+                value={nickname}
+                onChange={(event) => {
+                  setNickname(event.target.value);
+                }}
+              />
+              <button
+                className="font-['Inter'] font-bold py-2 px-12 min-w-[150px] border rounded-full border-[#046B38] bg-[#046B38]"
+                onClick={() => {
+                  goNext();
+                }}
+              >
+                Tiếp theo
+              </button>
+            </div>
           </div>
           <div className="flex justify-center md:mb-[57px]">
             <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[39px] hover:shadow-lg"
+              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setNickname("Bố bé Bi");
               }}
@@ -141,7 +145,7 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               Bố bé Bi
             </button>
             <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[39px] hover:shadow-lg"
+              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setNickname("Ba Tí");
               }}
@@ -149,7 +153,7 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               Ba Tí
             </button>
             <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[39px] hover:shadow-lg"
+              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setNickname("Bố bự");
               }}
@@ -159,7 +163,7 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
           </div>
           <div className="flex justify-center md:mb-[57px]">
             <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[39px] hover:shadow-lg"
+              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setNickname("Chìu ông");
               }}
@@ -167,7 +171,7 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               Chìu ông
             </button>
             <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[39px] hover:shadow-lg"
+              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setNickname("Cây ATM");
               }}
@@ -175,7 +179,7 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               Cây ATM
             </button>
             <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[39px] hover:shadow-lg"
+              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setNickname("Cục nợ");
               }}

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import RelationshipStep from "./components/relationship";
-// import WheelStep from "./components/wheel";
+import WheelStep from "./components/wheel";
 
 export default function Home() {
   const [relationship, setRelationship] = useState("");
@@ -58,7 +58,7 @@ export default function Home() {
             />
           </>
         )}
-        {/* {relationship && nickname && <WheelStep />} */}
+        {relationship && nickname && <WheelStep nickname={nickname} />}
       </div>
     </>
   );
