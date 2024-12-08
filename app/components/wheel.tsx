@@ -91,20 +91,20 @@ const WheelStep: React.FC<WheelProps> = ({
     }, 1500);
   };
 
-  const getPrize = async () => {
-    const response = await fetch(
-      `/api/certificate?imageName=${imageName}${prize}&nickname=${nickname}`
-    );
-
-    const blob = await response.blob();
-    const src = URL.createObjectURL(blob);
-
-    setImg(src);
-  };
-
   // update image prize once prize is retrieved
   useEffect(() => {
     if (prize) {
+      const getPrize = async () => {
+        const response = await fetch(
+          `/api/certificate?imageName=${imageName}${prize}&nickname=${nickname}`
+        );
+
+        const blob = await response.blob();
+        const src = URL.createObjectURL(blob);
+
+        setImg(src);
+      };
+
       getPrize();
     }
   }, [prize]);
@@ -147,7 +147,11 @@ const WheelStep: React.FC<WheelProps> = ({
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-4 max-w-3xl">
-              <div className={`border-0 rounded-lg relative flex flex-col w-full outline-none focus:outline-none ${saved && "bg-white"}`}>
+              <div
+                className={`border-0 rounded-lg relative flex flex-col w-full outline-none focus:outline-none ${
+                  saved && "bg-white"
+                }`}
+              >
                 <div
                   className={`relative flex-auto mb-6 px-4 ${
                     saved ? "mt-6" : "shadow-lg"

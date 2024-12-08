@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
 const dataFilePath = path.join(process.cwd(), "data", "pies.json");
 
-export async function POST(req: NextRequest) {
+export async function POST() {
   try {
     const jsonData = fs.readFileSync(dataFilePath, "utf-8");
     const prizes = JSON.parse(jsonData);
