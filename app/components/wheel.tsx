@@ -1,21 +1,63 @@
 // components/Wheel.tsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 // Define props type
 interface WheelProps {
   nickname: string;
   imageName: string;
+  clearInfo: () => void;
 }
 
-const WheelStep: React.FC<WheelProps> = ({ nickname, imageName }) => {
+const WheelStep: React.FC<WheelProps> = ({
+  nickname,
+  imageName,
+  clearInfo,
+}) => {
   const [showModal, setShowModal] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const [spinning, setSpinning] = useState(false);
   const [img, setImg] = useState("");
+  const [prize, setPrize] = useState<number | null>(null);
 
   let currentRotation = 0;
   const spinSpeed = 10;
 
+  const saveImage = () => {
+    const link = document.createElement("a");
+    link.href = img;
+    link.setAttribute("download", "image.png"); //or any other extension
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setSaved(true);
+  };
+
+  const shareFacebook = () => {
+    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      `${window.location.protocol}//${window.location.host}/api/spin?imageName=${imageName}&nickname=${nickname}`
+    )}`;
+
+    // Open the Facebook Share Dialog in a new tab
+    window.open(facebookShareUrl, "_blank", "width=600,height=400");
+  };
+
+  const retry = () => {
+    setImg("");
+    setPrize(null);
+    setShowModal(false);
+    clearInfo();
+  };
+
+  useEffect(() => {
+    console.log("prize: ", prize);
+  }, [prize]);
+
+  // get prize
   const spin = async () => {
+    console.log("spinning");
+    setSpinning(true);
     const wheels = document.querySelectorAll(".wheel");
     const spinningInterval = setInterval(() => {
       currentRotation = (currentRotation + spinSpeed) % 360;
@@ -25,9 +67,17 @@ const WheelStep: React.FC<WheelProps> = ({ nickname, imageName }) => {
       }
     }, 20);
 
-    const response = await fetch(`/api/spin?imageName=${imageName}&nickname=${nickname}`);
-    const blob = await response.blob();
-    const src = URL.createObjectURL(blob);
+    try {
+      const response = await fetch(`/api/spin`, { method: "POST" });
+
+      const result = await response.json();
+
+      if (result) {
+        setPrize(result.prize);
+      }
+    } catch (error) {
+      console.log(error);
+    }
 
     setTimeout(() => {
       clearInterval(spinningInterval);
@@ -37,10 +87,34 @@ const WheelStep: React.FC<WheelProps> = ({ nickname, imageName }) => {
         wheel.style.transform = `rotate(${currentRotation}deg)`;
       }
 
-      setImg(src);
-      setShowModal(true);
+      setSpinning(false);
     }, 1500);
   };
+
+  const getPrize = async () => {
+    const response = await fetch(
+      `/api/certificate?imageName=${imageName}${prize}&nickname=${nickname}`
+    );
+
+    const blob = await response.blob();
+    const src = URL.createObjectURL(blob);
+
+    setImg(src);
+  };
+
+  // update image prize once prize is retrieved
+  useEffect(() => {
+    if (prize) {
+      getPrize();
+    }
+  }, [prize]);
+
+  // show modal once spinning is done and img is generated
+  useEffect(() => {
+    if (!spinning && img) {
+      setShowModal(true);
+    }
+  }, [spinning, img]);
 
   return (
     <>
@@ -72,11 +146,15 @@ const WheelStep: React.FC<WheelProps> = ({ nickname, imageName }) => {
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                <div className="relative p-6 flex-auto">
-                  <div className="flex justify-center items-center">
-                    {img ? (
+            <div className="relative w-auto my-6 mx-4 max-w-3xl">
+              <div className={`border-0 rounded-lg relative flex flex-col w-full outline-none focus:outline-none ${saved && "bg-white"}`}>
+                <div
+                  className={`relative flex-auto mb-6 px-4 ${
+                    saved ? "mt-6" : "shadow-lg"
+                  }`}
+                >
+                  {img && !saved ? (
+                    <div className="flex justify-center items-center">
                       <Image
                         className=""
                         aria-hidden
@@ -86,16 +164,47 @@ const WheelStep: React.FC<WheelProps> = ({ nickname, imageName }) => {
                         height={0}
                         priority
                       />
-                    ) : null}
-                  </div>
+                    </div>
+                  ) : null}
+
+                  {saved && (
+                    <>
+                      <p className="text-[#DA2E2E] text-center font-['Inter']">
+                        Bạn đã lưu thành công giấy chứng nhận
+                      </p>
+                      <p className="text-black text-center font-['Inter']">
+                        Đừng ngần ngại mà chia sẻ điều đặc biệt này nha!
+                      </p>
+                    </>
+                  )}
                 </div>
-                <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                <div className="flex items-center justify-center pb-4">
+                  {!saved && (
+                    <button
+                      className="text-white bg-[#046B38] font-['Inter'] shadow-lg rounded-full font-bold w-full px-6 py-2 text-sm outline-none focus:outline-none mx-2 mb-1 ease-linear transition-all duration-150"
+                      type="button"
+                      onClick={() => saveImage()}
+                    >
+                      Lưu lại
+                    </button>
+                  )}
+                  {!saved && (
+                    <button
+                      className="text-white bg-[#046B38] font-['Inter'] shadow-lg rounded-full font-bold w-full px-6 py-2 text-sm outline-none focus:outline-none mx-2 mb-1 ease-linear transition-all duration-150"
+                      type="button"
+                      onClick={() => shareFacebook()}
+                    >
+                      Chia sẻ
+                    </button>
+                  )}
                   <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className={`text-white bg-[#DA2E2E] font-['Inter'] shadow-lg rounded-full font-bold ${
+                      !saved ? "w-full" : ""
+                    } px-6 py-2 text-sm outline-none focus:outline-none mx-2 mb-1 ease-linear transition-all duration-150`}
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => retry()}
                   >
-                    Đóng
+                    Làm lại
                   </button>
                 </div>
               </div>
