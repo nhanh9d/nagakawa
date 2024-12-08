@@ -47,7 +47,7 @@ const WheelStep: React.FC<WheelProps> = ({ nickname, imageName }) => {
       <div className="main md:flex md:h-[calc(100vh-130px)] md:overflow-hidden md:px-[100px] relative">
         <div className="hover:cursor-pointer relative">
           <Image
-            className="wheel aspect-square md:!max-w-[600px]"
+            className="wheel aspect-square w-auto h-full"
             aria-hidden
             src="/wheel.png"
             alt="Nagakawa"
