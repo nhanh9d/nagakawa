@@ -118,7 +118,7 @@ const WheelStep: React.FC<WheelProps> = ({
 
   return (
     <>
-      <div className="main md:flex md:h-[calc(100vh-130px)] md:overflow-hidden md:px-[100px] relative">
+      <div className="main md:flex md:h-[calc(100vh-200px)] md:overflow-hidden md:px-[100px] relative">
         <div className="hover:cursor-pointer relative">
           <Image
             className="wheel aspect-square w-auto h-full"
@@ -151,11 +151,14 @@ const WheelStep: React.FC<WheelProps> = ({
             NHẤN ĐỂ QUAY
           </button>
         </div>
-        <div className="text-black text-center font-['Inter'] text-[12px]">
-          <a href="#">Nội dung & Thể lệ chương trình</a>
-          <p className="mt-2">Nếu quý khách gặp bất cứ vấn đề gì trong quá trình chơi,</p>
-          <p>vui lòng liên hệ hotline 1900.545.489 để được giải đáp</p>
-        </div>
+      </div>
+
+      <div className="text-black text-center font-['Inter'] text-[12px]">
+        <a href="#">Nội dung & Thể lệ chương trình</a>
+        <p className="mt-2">
+          Nếu quý khách gặp bất cứ vấn đề gì trong quá trình chơi,
+        </p>
+        <p>vui lòng liên hệ hotline 1900.545.489 để được giải đáp</p>
       </div>
 
       {showModal ? (
