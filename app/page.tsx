@@ -20,11 +20,17 @@ export default function Home() {
   const clearInfo = () => {
     setRelationship("");
     setNickname("");
-  }
+  };
 
   return (
     <>
-      <div className={`bg-[url('/bg_mobile${relationship && nickname ? "_wheel" : ""}.png')] md:bg-[url('/bg_desktop.png')] bg-cover bg-repeat bg-center w-screen h-screen`}>
+      <div
+        className={`bg-[url('../public/bg_mobile${
+          relationship && nickname ? "_wheel" : ""
+        }.png')] md:bg-[url('../public/bg_desktop${
+          relationship && nickname ? "_wheel" : ""
+        }.png')] bg-cover bg-repeat bg-center w-screen h-screen`}
+      >
         <div className="h-[75px] md:h-[130px]">
           <Image
             className="hidden md:block fixed left-1/2 -translate-x-1/2 !max-w-full !h-auto z-10"
@@ -63,7 +69,13 @@ export default function Home() {
             />
           </>
         )}
-        {relationship && nickname && <WheelStep nickname={nickname} imageName={relationship} clearInfo={clearInfo} />}
+        {relationship && nickname && (
+          <WheelStep
+            nickname={nickname}
+            imageName={relationship}
+            clearInfo={clearInfo}
+          />
+        )}
       </div>
     </>
   );
