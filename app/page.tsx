@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <>
-      <div className={`bg-[url('/bg_mobile${relationship && nickname ? "_wheel" : ""}.png')] md:bg-[url('/bg_desktop${relationship && nickname ? "_wheel" : ""}.png')] bg-cover bg-repeat bg-center w-screen h-screen`}>
+      <div className={`bg-[url('/bg_mobile${relationship && nickname ? "_wheel" : ""}.png')] md:bg-[url('/bg_desktop.png')] bg-cover bg-repeat bg-center w-screen h-screen`}>
         <div className="h-[75px] md:h-[130px]">
           <Image
             className="hidden md:block fixed left-1/2 -translate-x-1/2 !max-w-full !h-auto z-10"
