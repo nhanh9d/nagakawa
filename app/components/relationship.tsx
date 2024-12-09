@@ -13,6 +13,9 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
 }) => {
   const [showNickname, setShowNickname] = useState(false);
   const [nickname, setNickname] = useState("");
+  const [suggestNicknames, setSuggestNicknames] = useState<string[][] | null>(
+    null
+  );
   const [relationship, setRelationship] = useState("");
   const [question, setQuestion] = useState(
     "Vai trò của bạn trong gia đình là gì?"
@@ -24,22 +27,43 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
       switch (relationship) {
         case "Bố":
           setQuestion("Biệt danh gia đình thường gọi bạn là gì?");
+          setSuggestNicknames([
+            ["Bố bé Bi", "Anh Xã", "Bố bự"],
+            ["Chồng iu", "Bố Siêu nhân"],
+          ]);
           break;
         case "Mẹ":
           setQuestion("Biệt danh bạn thường gọi chồng là gì?");
+          setSuggestNicknames([
+            ["Bố bé Bi", "Ông Xã", "Anh Chồng"],
+            ["Chồng iu", "Thần Tài", "Cục cưng"],
+          ]);
           break;
         case "Con":
           setQuestion("Biệt danh bạn thường gọi bố mình là gì?");
+          setSuggestNicknames([
+            ["Bố bé Bi", "Ba Tí", "Bố bự"],
+            ["Hoàng thượng", "Nhà đầu tư"],
+          ]);
           break;
         case "Vợ":
           setQuestion("Biệt danh bạn thường gọi chồng là gì?");
+          setSuggestNicknames([
+            ["Mình", "Anh Chồng", "Ông Xã"],
+            ["Anh bạn đời", "Cục cưng", "Chồng iu"],
+          ]);
           break;
         case "Chồng":
           setQuestion("Biệt danh vợ bạn thường gọi bạn là gì?");
+          setSuggestNicknames([
+            ["Anh Chồng", "Anh Xã", "Mình"],
+            ["Chồng iu", "Anh bạn đời"],
+          ]);
           break;
 
         default:
           setQuestion("Vai trò của bạn trong gia đình là gì?");
+          setSuggestNicknames([]);
           break;
       }
     }
@@ -137,58 +161,24 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               </button>
             </div>
           </div>
-          <div className="flex justify-center md:mb-[57px] mb-4">
-            <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-2 md:mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] text-[12px] md:text-[24px] hover:shadow-lg"
-              onClick={() => {
-                setNickname("Bố bé Bi");
-              }}
-            >
-              Bố bé Bi
-            </button>
-            <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-2 md:mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] text-[12px] md:text-[24px] hover:shadow-lg"
-              onClick={() => {
-                setNickname("Ba Tí");
-              }}
-            >
-              Ba Tí
-            </button>
-            <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-2 md:mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] text-[12px] md:text-[24px] hover:shadow-lg"
-              onClick={() => {
-                setNickname("Bố bự");
-              }}
-            >
-              Bố bự
-            </button>
-          </div>
-          <div className="flex justify-center md:mb-[57px] mb-4">
-            <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-2 md:mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] text-[12px] md:text-[24px] hover:shadow-lg"
-              onClick={() => {
-                setNickname("Chìu ông");
-              }}
-            >
-              Chìu ông
-            </button>
-            <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-2 md:mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] text-[12px] md:text-[24px] hover:shadow-lg"
-              onClick={() => {
-                setNickname("Cây ATM");
-              }}
-            >
-              Cây ATM
-            </button>
-            <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-2 md:mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] text-[12px] md:text-[24px] hover:shadow-lg"
-              onClick={() => {
-                setNickname("Cục nợ");
-              }}
-            >
-              Cục nợ
-            </button>
-          </div>
+          {suggestNicknames?.map((row) => (
+            <>
+              <div className="flex justify-center md:mb-[57px] mb-4">
+                {row.map((suggestNickname) => (
+                  <>
+                    <button
+                      className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-2 md:mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] text-[12px] md:text-[24px] hover:shadow-lg"
+                      onClick={() => {
+                        setNickname(suggestNickname);
+                      }}
+                    >
+                      {suggestNickname}
+                    </button>
+                  </>
+                ))}
+              </div>
+            </>
+          ))}
           <div className="flex justify-center md:hidden mx-4">
             <button
               className="font-['Inter'] w-full text-white font-bold py-2 px-12 min-w-[150px] border rounded-full border-[#046B38] bg-[#046B38]"
