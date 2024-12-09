@@ -161,23 +161,20 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               </button>
             </div>
           </div>
-          {suggestNicknames?.map((row) => (
-            <>
-              <div className="flex justify-center md:mb-[57px] mb-4">
-                {row.map((suggestNickname) => (
-                  <>
-                    <button
-                      className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-2 md:mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] text-[12px] md:text-[24px] hover:shadow-lg"
-                      onClick={() => {
-                        setNickname(suggestNickname);
-                      }}
-                    >
-                      {suggestNickname}
-                    </button>
-                  </>
-                ))}
-              </div>
-            </>
+          {suggestNicknames?.map((row, i) => (
+            <div className="flex justify-center md:mb-[57px] mb-4" key={i}>
+              {row.map((suggestNickname, j) => (
+                <button
+                  className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-2 md:mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] text-[12px] md:text-[24px] hover:shadow-lg"
+                  onClick={() => {
+                    setNickname(suggestNickname);
+                  }}
+                  key={j}
+                >
+                  {suggestNickname}
+                </button>
+              ))}
+            </div>
           ))}
           <div className="flex justify-center md:hidden mx-4">
             <button
