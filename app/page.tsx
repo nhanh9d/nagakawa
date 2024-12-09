@@ -25,11 +25,7 @@ export default function Home() {
   return (
     <>
       <div
-        className={`bg-[url('../public/bg_mobile${
-          relationship && nickname ? "_wheel" : ""
-        }.png')] md:bg-[url('../public/bg_desktop${
-          relationship && nickname ? "_wheel" : ""
-        }.png')] bg-cover bg-repeat bg-center w-screen h-screen`}
+        className={`entry-page ${relationship && nickname ? "wheel-bg" : ""} bg-cover bg-repeat bg-center w-screen h-screen`}
       >
         <div className="h-[75px] md:h-[130px]">
           <Image

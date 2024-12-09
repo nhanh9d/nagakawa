@@ -203,7 +203,7 @@ const WheelStep: React.FC<WheelProps> = ({
                 <div className="flex items-center justify-center pb-4">
                   {!saved && (
                     <button
-                      className="text-white bg-[#046B38] font-['Inter'] shadow-lg rounded-full font-bold w-full px-6 py-2 text-sm outline-none focus:outline-none mx-2 mb-1 ease-linear transition-all duration-150"
+                      className="text-white bg-[#046B38] font-['Inter'] shadow-lg rounded-full font-bold w-full px-2 md:px-6 py-2 text-sm outline-none focus:outline-none mx-2 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={() => saveImage()}
                     >
@@ -212,7 +212,7 @@ const WheelStep: React.FC<WheelProps> = ({
                   )}
                   {!saved && (
                     <button
-                      className="text-white bg-[#046B38] font-['Inter'] shadow-lg rounded-full font-bold w-full px-6 py-2 text-sm outline-none focus:outline-none mx-2 mb-1 ease-linear transition-all duration-150"
+                      className="text-white bg-[#046B38] font-['Inter'] shadow-lg rounded-full font-bold w-full px-2 md:px-6 py-2 text-sm outline-none focus:outline-none mx-2 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={() => shareFacebook()}
                     >
@@ -222,7 +222,7 @@ const WheelStep: React.FC<WheelProps> = ({
                   <button
                     className={`text-white bg-[#DA2E2E] font-['Inter'] shadow-lg rounded-full font-bold ${
                       !saved ? "w-full" : ""
-                    } px-6 py-2 text-sm outline-none focus:outline-none mx-2 mb-1 ease-linear transition-all duration-150`}
+                    } px-2 md:px-6 py-2 text-sm outline-none focus:outline-none mx-2 mb-1 ease-linear transition-all duration-150`}
                     type="button"
                     onClick={() => retry()}
                   >
