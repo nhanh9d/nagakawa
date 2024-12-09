@@ -141,6 +141,21 @@ const WheelStep: React.FC<WheelProps> = ({
             onClick={() => spin()}
           />
         </div>
+        <div className="md:hidden mt-4 mx-4 mb-12">
+          <button
+            className="font-['Inter'] w-full text-[#046B38] font-bold py-2 px-12 min-w-[150px] border rounded-full border-[#046B38] bg-[#fff]"
+            onClick={() => {
+              spin();
+            }}
+          >
+            NHẤN ĐỂ QUAY
+          </button>
+        </div>
+        <div className="text-black text-center font-['Inter'] text-[12px]">
+          <a href="#">Nội dung & Thể lệ chương trình</a>
+          <p className="mt-2">Nếu quý khách gặp bất cứ vấn đề gì trong quá trình chơi,</p>
+          <p>vui lòng liên hệ hotline 1900.545.489 để được giải đáp</p>
+        </div>
       </div>
 
       {showModal ? (

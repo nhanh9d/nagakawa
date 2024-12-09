@@ -116,17 +116,19 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
       ) : (
         <>
           <div className="flex justify-center mb-[24px] md:mb-[45px]">
-            <div className="md:max-w-[80%]">
-              <input
-                className="font-['Inter'] placeholder:italic rounded-full bg-white py-2 px-[20px] text-black mr-4 md:min-w-[500px]"
-                placeholder="Nhập biệt danh..."
-                value={nickname}
-                onChange={(event) => {
-                  setNickname(event.target.value);
-                }}
-              />
+            <div className="md:max-w-[80%] w-full md:w-auto flex">
+              <div className="mx-4 w-full md:w-auto">
+                <input
+                  className="font-['Inter'] placeholder:italic rounded-full bg-white py-2 px-[20px] text-black w-full md:min-w-[500px]"
+                  placeholder="Nhập biệt danh..."
+                  value={nickname}
+                  onChange={(event) => {
+                    setNickname(event.target.value);
+                  }}
+                />
+              </div>
               <button
-                className="font-['Inter'] text-white font-bold py-2 px-12 min-w-[150px] border rounded-full border-[#046B38] bg-[#046B38]"
+                className="font-['Inter'] hidden md:block text-white font-bold py-2 px-12 min-w-[150px] border rounded-full border-[#046B38] bg-[#046B38]"
                 onClick={() => {
                   goNext();
                 }}
@@ -135,9 +137,9 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               </button>
             </div>
           </div>
-          <div className="flex justify-center md:mb-[57px]">
+          <div className="flex justify-center md:mb-[57px] mb-4">
             <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
+              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-2 md:mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] text-[12px] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setNickname("Bố bé Bi");
               }}
@@ -145,7 +147,7 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               Bố bé Bi
             </button>
             <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
+              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-2 md:mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] text-[12px] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setNickname("Ba Tí");
               }}
@@ -153,7 +155,7 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               Ba Tí
             </button>
             <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
+              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-2 md:mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] text-[12px] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setNickname("Bố bự");
               }}
@@ -161,9 +163,9 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               Bố bự
             </button>
           </div>
-          <div className="flex justify-center md:mb-[57px]">
+          <div className="flex justify-center md:mb-[57px] mb-4">
             <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
+              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-2 md:mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] text-[12px] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setNickname("Chìu ông");
               }}
@@ -171,7 +173,7 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               Chìu ông
             </button>
             <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
+              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-2 md:mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] text-[12px] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setNickname("Cây ATM");
               }}
@@ -179,12 +181,22 @@ const RelationshipStep: React.FC<RelationshipProps> = ({
               Cây ATM
             </button>
             <button
-              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[120px] md:min-w-[200px] text-[#046B38] md:text-[24px] hover:shadow-lg"
+              className="focus:bg-[#046B38] focus:text-white font-['Inter'] font-bold mx-2 md:mx-4 px-4 py-2 border rounded-full border-[#046B38] min-w-[100px] md:min-w-[200px] text-[#046B38] text-[12px] md:text-[24px] hover:shadow-lg"
               onClick={() => {
                 setNickname("Cục nợ");
               }}
             >
               Cục nợ
+            </button>
+          </div>
+          <div className="flex justify-center md:hidden mx-4">
+            <button
+              className="font-['Inter'] w-full text-white font-bold py-2 px-12 min-w-[150px] border rounded-full border-[#046B38] bg-[#046B38]"
+              onClick={() => {
+                goNext();
+              }}
+            >
+              Tiếp theo
             </button>
           </div>
         </>
