@@ -15,8 +15,14 @@ export async function POST(req: NextRequest) {
     // const selectedPrize = prizes[randomIndex];
 
     const data = await req.json();
-    const spinData = fs.readFileSync(spinDataFilePath, "utf-8");
-    let spins = JSON.parse(spinData);
+    let spins = [];
+
+    try {
+      const spinData = fs.readFileSync(spinDataFilePath, "utf-8");
+      spins = JSON.parse(spinData);
+    } catch (error) {
+      console.log(error);
+    }
 
     const newSpin = { ...data, imageName: `${data.imageName}${randomIndex}` };
     spins = spins ? [...spins, newSpin] : [newSpin];
