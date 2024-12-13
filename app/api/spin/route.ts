@@ -2,7 +2,6 @@ import { NextResponse, NextRequest } from "next/server";
 import fs from "fs";
 import path from "path";
 import { createClient } from '@supabase/supabase-js'
-import { Database } from '@/supabase'
 
 const dataFilePath = path.join(process.cwd(), "data", "pies.json");
 const supabase = createClient('https://fokvqixmjzqavisdeqim.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZva3ZxaXhtanpxYXZpc2RlcWltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQwOTc0MDYsImV4cCI6MjA0OTY3MzQwNn0.-sJ66UjMKpTsq4vxTeZouc_qG_hFXUA-QVx7KYhjjBM');
