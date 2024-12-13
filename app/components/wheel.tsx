@@ -4,12 +4,14 @@ import Image from "next/image";
 
 // Define props type
 interface WheelProps {
+  relationship: string;
   nickname: string;
   imageName: string;
   clearInfo: () => void;
 }
 
 const WheelStep: React.FC<WheelProps> = ({
+  relationship,
   nickname,
   imageName,
   clearInfo,
@@ -56,7 +58,6 @@ const WheelStep: React.FC<WheelProps> = ({
 
   // get prize
   const spin = async () => {
-    console.log("spinning");
     setSpinning(true);
     const wheels = document.querySelectorAll(".wheel");
     const spinningInterval = setInterval(() => {
@@ -68,7 +69,13 @@ const WheelStep: React.FC<WheelProps> = ({
     }, 20);
 
     try {
-      const response = await fetch(`/api/spin`, { method: "POST" });
+      const response = await fetch(`/api/spin`, {
+        method: "POST", body: JSON.stringify({
+          nickname,
+          relationship,
+          imageName,
+        })
+      });
 
       const result = await response.json();
 
@@ -166,14 +173,12 @@ const WheelStep: React.FC<WheelProps> = ({
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-4 max-w-3xl">
               <div
-                className={`border-0 rounded-lg relative flex flex-col w-full outline-none focus:outline-none ${
-                  saved && "bg-white"
-                }`}
+                className={`border-0 rounded-lg relative flex flex-col w-full outline-none focus:outline-none ${saved && "bg-white"
+                  }`}
               >
                 <div
-                  className={`relative flex-auto mb-6 px-4 ${
-                    saved ? "mt-6" : "shadow-lg"
-                  }`}
+                  className={`relative flex-auto mb-6 px-4 ${saved ? "mt-6" : "shadow-lg"
+                    }`}
                 >
                   {img && !saved ? (
                     <div className="flex justify-center items-center">
@@ -220,9 +225,8 @@ const WheelStep: React.FC<WheelProps> = ({
                     </button>
                   )}
                   <button
-                    className={`text-white bg-[#DA2E2E] font-['Inter'] shadow-lg rounded-full font-bold ${
-                      !saved ? "w-full" : ""
-                    } px-2 md:px-6 py-2 text-sm outline-none focus:outline-none mx-2 mb-1 ease-linear transition-all duration-150`}
+                    className={`text-white bg-[#DA2E2E] font-['Inter'] shadow-lg rounded-full font-bold ${!saved ? "w-full" : ""
+                      } px-2 md:px-6 py-2 text-sm outline-none focus:outline-none mx-2 mb-1 ease-linear transition-all duration-150`}
                     type="button"
                     onClick={() => retry()}
                   >

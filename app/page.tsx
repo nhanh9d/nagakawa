@@ -6,11 +6,13 @@ import RelationshipStep from "./components/relationship";
 import WheelStep from "./components/wheel";
 
 export default function Home() {
+  const [relationshipType, setRelationshipType] = useState("");
   const [relationship, setRelationship] = useState("");
   const [nickname, setNickname] = useState("");
 
   const selectRelationship = (selectedRelationship: string) => {
-    setRelationship(selectedRelationship === "Chồng" ? "husband" : "father");
+    setRelationshipType(selectedRelationship === "Chồng" ? "husband" : "father");
+    setRelationship(selectedRelationship);
   };
 
   const selectNickname = (selectedNickname: string) => {
@@ -68,7 +70,8 @@ export default function Home() {
         {relationship && nickname && (
           <WheelStep
             nickname={nickname}
-            imageName={relationship}
+            imageName={relationshipType}
+            relationship={relationship}
             clearInfo={clearInfo}
           />
         )}
