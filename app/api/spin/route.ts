@@ -1,9 +1,11 @@
 import { NextResponse, NextRequest } from "next/server";
 import fs from "fs";
 import path from "path";
+import { createClient } from '@supabase/supabase-js'
+import { Database } from '@/supabase'
 
 const dataFilePath = path.join(process.cwd(), "data", "pies.json");
-const spinDataFilePath = path.join(process.cwd(), "data", "spins.json");
+const supabase = createClient('https://fokvqixmjzqavisdeqim.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZva3ZxaXhtanpxYXZpc2RlcWltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQwOTc0MDYsImV4cCI6MjA0OTY3MzQwNn0.-sJ66UjMKpTsq4vxTeZouc_qG_hFXUA-QVx7KYhjjBM');
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,18 +17,12 @@ export async function POST(req: NextRequest) {
     // const selectedPrize = prizes[randomIndex];
 
     const data = await req.json();
-    let spins = [];
 
-    try {
-      const spinData = fs.readFileSync(spinDataFilePath, "utf-8");
-      spins = JSON.parse(spinData);
-    } catch (error) {
-      console.log(error);
-    }
-
-    const newSpin = { ...data, imageName: `${data.imageName}${randomIndex}` };
-    spins = spins ? [...spins, newSpin] : [newSpin];
-    fs.writeFileSync(spinDataFilePath, JSON.stringify(spins, null, 2));
+    const { error } = await supabase
+      .from('spins')
+      .insert({ ...data, imageName: `${data.imageName}${randomIndex}` })
+      
+    console.log(error);
 
     return NextResponse.json({ prize: randomIndex });
   } catch (error) {
